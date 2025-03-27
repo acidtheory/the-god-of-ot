@@ -12,5 +12,8 @@ func enter():
 func update(_delta):
 	pass
 
+func physics_update(_delta):
+	pass
+
 func exit():
 	pass

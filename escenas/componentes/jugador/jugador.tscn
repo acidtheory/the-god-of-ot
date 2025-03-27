@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ta2j1xkutlpa"]
+[gd_scene load_steps=41 format=3 uid="uid://ta2j1xkutlpa"]
 
 [ext_resource type="Script" uid="uid://fn5qd36csaov" path="res://escenas/componentes/jugador/jugador.gd" id="1_6on4n"]
 [ext_resource type="Texture2D" uid="uid://b1h6wcnbfkvht" path="res://assets/texturas/jugadore/idle.png" id="2_6on4n"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://tscj1wuuscg3" path="res://assets/texturas/jugadore/jump.png" id="3_gk1eg"]
 [ext_resource type="Texture2D" uid="uid://dcuweggiksrbd" path="res://assets/texturas/jugadore/run.png" id="5_udejt"]
 [ext_resource type="Script" uid="uid://ce2xqoqldtmfn" path="res://escenas/componentes/maquina_estado/maquina_estado.gd" id="6_y0sdt"]
-[ext_resource type="Script" uid="uid://oi3346jhr7lk" path="res://escenas/componentes/jugador/estados/quieto.gd" id="7_ouxw5"]
+[ext_resource type="Script" uid="uid://oi3346jhr7lk" path="res://escenas/componentes/jugador/estados/quieto.gd" id="7_gk1eg"]
+[ext_resource type="Script" uid="uid://bssju888wlg3n" path="res://escenas/componentes/jugador/estados/cayendo.gd" id="8_gk1eg"]
+[ext_resource type="Script" uid="uid://5brk0v5v80nx" path="res://escenas/componentes/jugador/estados/corriendo.gd" id="9_udejt"]
+[ext_resource type="Script" uid="uid://2llrdjg6n3sn" path="res://escenas/componentes/jugador/estados/saltando.gd" id="10_y0sdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6on4n"]
 size = Vector2(15, 48)
@@ -142,7 +145,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b28b7")
 }],
 "loop": true,
-"name": &"atak",
+"name": &"Atak",
 "speed": 9.0
 }, {
 "frames": [{
@@ -165,7 +168,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_i7n6f")
 }],
 "loop": true,
-"name": &"folin",
+"name": &"Folin",
 "speed": 8.0
 }, {
 "frames": [{
@@ -185,7 +188,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hwtty")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"Jump",
 "speed": 8.0
 }, {
 "frames": [{
@@ -202,7 +205,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ar1kp")
 }],
 "loop": true,
-"name": &"uy kieto",
+"name": &"Uy kieto",
 "speed": 3.0
 }, {
 "frames": [{
@@ -231,12 +234,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_6wyn2")
 }],
 "loop": true,
-"name": &"why are u runnin",
+"name": &"Why are u runnin",
 "speed": 15.0
 }]
 
-[node name="Jugador" type="CharacterBody2D"]
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_6on4n")
+sprite = NodePath("AnimatedSprite2D")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -245,14 +249,23 @@ shape = SubResource("RectangleShape2D_6on4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ouxw5")
-animation = &"jump"
-frame = 2
-frame_progress = 0.573382
+animation = &"Why are u runnin"
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("6_y0sdt")
 jugador = NodePath("..")
 
-[node name="Estado" type="Node" parent="MaquinaEstado"]
-script = ExtResource("7_ouxw5")
+[node name="Quieto" type="Node" parent="MaquinaEstado"]
+script = ExtResource("7_gk1eg")
+metadata/_custom_type_script = "uid://cdc6nlupn6h1x"
+
+[node name="Cayendo" type="Node" parent="MaquinaEstado"]
+script = ExtResource("8_gk1eg")
+metadata/_custom_type_script = "uid://cdc6nlupn6h1x"
+
+[node name="Corriendo" type="Node" parent="MaquinaEstado"]
+script = ExtResource("9_udejt")
+
+[node name="Saltando" type="Node" parent="MaquinaEstado"]
+script = ExtResource("10_y0sdt")
 metadata/_custom_type_script = "uid://cdc6nlupn6h1x"
