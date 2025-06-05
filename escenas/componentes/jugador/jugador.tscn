@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ta2j1xkutlpa"]
+[gd_scene load_steps=44 format=3 uid="uid://ta2j1xkutlpa"]
 
 [ext_resource type="Script" uid="uid://fn5qd36csaov" path="res://escenas/componentes/jugador/jugador.gd" id="1_6on4n"]
 [ext_resource type="Texture2D" uid="uid://b1h6wcnbfkvht" path="res://assets/texturas/jugadore/idle.png" id="2_6on4n"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://bssju888wlg3n" path="res://escenas/componentes/jugador/estados/cayendo.gd" id="8_gk1eg"]
 [ext_resource type="Script" uid="uid://5brk0v5v80nx" path="res://escenas/componentes/jugador/estados/corriendo.gd" id="9_udejt"]
 [ext_resource type="Script" uid="uid://2llrdjg6n3sn" path="res://escenas/componentes/jugador/estados/saltando.gd" id="10_y0sdt"]
+[ext_resource type="Script" uid="uid://4x4eqnttxt1s" path="res://escenas/componentes/jugador/estados/atacando.gd" id="11_lbvop"]
+[ext_resource type="PackedScene" uid="uid://bs8uta2dwmohx" path="res://escenas/componentes/ui/hud/hud.tscn" id="11_lde6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6on4n"]
 size = Vector2(15, 48)
@@ -144,9 +146,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b28b7")
 }],
-"loop": true,
+"loop": false,
 "name": &"Atak",
-"speed": 9.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -169,7 +171,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Folin",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,7 +191,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
-"speed": 8.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -238,9 +240,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbvop"]
+radius = 16.0312
+
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud")]
 script = ExtResource("1_6on4n")
 sprite = NodePath("AnimatedSprite2D")
+hud = NodePath("CanvasLayer/HUD")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -249,7 +255,7 @@ shape = SubResource("RectangleShape2D_6on4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ouxw5")
-animation = &"Why are u runnin"
+animation = &"Folin"
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("6_y0sdt")
@@ -269,3 +275,17 @@ script = ExtResource("9_udejt")
 [node name="Saltando" type="Node" parent="MaquinaEstado"]
 script = ExtResource("10_y0sdt")
 metadata/_custom_type_script = "uid://cdc6nlupn6h1x"
+
+[node name="Atacando" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("attack_hitbox")]
+script = ExtResource("11_lbvop")
+attack_hitbox = NodePath("../../Hitbox")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("11_lde6h")]
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(14, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_lbvop")
