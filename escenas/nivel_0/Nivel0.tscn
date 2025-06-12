@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://c23koia1el0sg"]
+[gd_scene load_steps=7 format=4 uid="uid://c23koia1el0sg"]
 
 [ext_resource type="PackedScene" uid="uid://ta2j1xkutlpa" path="res://escenas/componentes/jugador/jugador.tscn" id="1_8pfdu"]
 [ext_resource type="Texture2D" uid="uid://d2achlsbr80xk" path="res://assets/texturas/icon.svg" id="2_003vn"]
 [ext_resource type="Script" uid="uid://cr3rsh23vx14n" path="res://escenas/componentes/save_manager/save_manager.gd" id="3_310cu"]
 [ext_resource type="TileSet" uid="uid://dcu2gsc1jurdh" path="res://assets/texturas/atlas/terrain_tileset.tres" id="4_18kb5"]
+[ext_resource type="Script" uid="uid://n0wf1x8ia83w" path="res://escenas/nivel_0/control.gd" id="5_bw107"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_310cu"]
 size = Vector2(128, 128)
@@ -33,3 +34,10 @@ tile_set = ExtResource("4_18kb5")
 
 [node name="ObjectLayer" type="TileMapLayer" parent="."]
 tile_set = ExtResource("4_18kb5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_bw107")
