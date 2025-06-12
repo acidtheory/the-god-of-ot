@@ -189,7 +189,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hwtty")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
 "speed": 9.0
 }, {
@@ -255,7 +255,7 @@ shape = SubResource("RectangleShape2D_6on4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ouxw5")
-animation = &"Folin"
+animation = &"Jump"
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("6_y0sdt")
