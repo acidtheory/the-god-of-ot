@@ -1,9 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://b13g4iwkq8cwu"]
+[gd_scene load_steps=16 format=3 uid="uid://b13g4iwkq8cwu"]
 
-[ext_resource type="Texture2D" uid="uid://1srwh7ummu77" path="res://escenas/componentes/ui/menu_titulo/castle.jpg" id="1_qtu10"]
-[ext_resource type="Texture2D" uid="uid://4rjwhl2yc7l8" path="res://sword.png" id="2_ee4bf"]
-[ext_resource type="FontFile" uid="uid://bleqta6ysoks3" path="res://escenas/componentes/ui/menu_titulo/agate.ttf" id="3_kbped"]
-[ext_resource type="Texture2D" uid="uid://eul4vbyf70o4" path="res://escenas/componentes/ui/menu_titulo/ot.png" id="4_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://1srwh7ummu77" path="res://escenas/componentes/ui/menu_titulo/castle.jpg" id="1_u5mfw"]
+[ext_resource type="Texture2D" uid="uid://4rjwhl2yc7l8" path="res://sword.png" id="2_h0a6g"]
+[ext_resource type="FontFile" uid="uid://bleqta6ysoks3" path="res://escenas/componentes/ui/menu_titulo/agate.ttf" id="3_84xaf"]
+[ext_resource type="Texture2D" uid="uid://eul4vbyf70o4" path="res://escenas/componentes/ui/menu_titulo/ot.png" id="4_xgg3d"]
+
+[sub_resource type="Gradient" id="Gradient_u5mfw"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h0a6g"]
+gradient = SubResource("Gradient_u5mfw")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e2m"]
 content_margin_right = 19.0
@@ -25,6 +36,93 @@ shadow_size = 3
 shadow_offset = Vector2(0.56, 1)
 anti_aliasing_size = 6.755
 
+[sub_resource type="Animation" id="Animation_u5mfw"]
+resource_name = "inicio_titulo"
+length = 0.8
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Espada:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(754, -798), Vector2(562, -168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espada/TextureRect:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 0.575, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_h0a6g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Espada:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(754, -798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espada/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84xaf"]
+_data = {
+&"RESET": SubResource("Animation_h0a6g"),
+&"inicio_titulo": SubResource("Animation_u5mfw")
+}
+
+[sub_resource type="Gradient" id="Gradient_h0a6g"]
+colors = PackedColorArray(1, 0.611765, 0, 1, 1, 0.611765, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_84xaf"]
+gradient = SubResource("Gradient_h0a6g")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Curve" id="Curve_u5mfw"]
+_data = [Vector2(0.00558659, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h0a6g"]
+curve = SubResource("Curve_u5mfw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_84xaf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 22.0
+initial_velocity_min = 5.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_h0a6g")
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -37,7 +135,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Fondo" type="TextureRect" parent="."]
 modulate = Color(0.864675, 0.864675, 0.864675, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -52,20 +150,30 @@ offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.465, 1.465)
-texture = ExtResource("1_qtu10")
+texture = ExtResource("1_u5mfw")
 stretch_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Espada" type="TextureRect" parent="."]
 modulate = Color(0.920995, 0.920995, 0.920995, 1)
 layout_mode = 0
-offset_left = 474.0
-offset_top = -120.0
-offset_right = 1498.0
-offset_bottom = 904.0
+offset_left = 754.0
+offset_top = -798.0
+offset_right = 1778.0
+offset_bottom = 226.0
 rotation = 0.270526
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_ee4bf")
+texture = ExtResource("2_h0a6g")
 flip_v = true
+
+[node name="TextureRect" type="TextureRect" parent="Espada"]
+layout_mode = 0
+offset_left = -45.5542
+offset_top = 129.75
+offset_right = 978.446
+offset_bottom = 1153.75
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(512, 512)
+texture = SubResource("GradientTexture2D_h0a6g")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -79,14 +187,14 @@ offset_bottom = 92.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.30924, 0.784766, 0.881085, 1)
 theme_override_colors/font_shadow_color = Color(0.340339, 0.340339, 0.340339, 1)
-theme_override_fonts/font = ExtResource("3_kbped")
+theme_override_fonts/font = ExtResource("3_84xaf")
 theme_override_font_sizes/font_size = 156
 theme_override_styles/normal = SubResource("StyleBoxFlat_62e2m")
 text = "The God of Ot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="Godot" type="TextureRect" parent="."]
 modulate = Color(0.615686, 0.666667, 0.286275, 1)
 self_modulate = Color(0.707967, 0.707967, 0.707967, 1)
 layout_mode = 0
@@ -96,4 +204,29 @@ offset_right = 1336.0
 offset_bottom = 1537.0
 rotation = -0.13439
 scale = Vector2(0.11, 0.11)
-texture = ExtResource("4_ee4bf")
+texture = ExtResource("4_xgg3d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_84xaf")
+}
+
+[node name="Antorcha" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 594.0
+offset_right = 922.0
+offset_bottom = 924.0
+rotation = 0.349066
+color = Color(0.30396, 0.192696, 0.0477981, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Antorcha"]
+position = Vector2(30.4156, 1.69975)
+texture = SubResource("GradientTexture2D_84xaf")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Antorcha"]
+position = Vector2(30.4156, 1.69975)
+amount = 64
+texture = SubResource("GradientTexture2D_84xaf")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_84xaf")
