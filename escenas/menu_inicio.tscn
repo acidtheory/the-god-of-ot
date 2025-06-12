@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://wjmolfqk82gp"]
+
+[ext_resource type="Texture2D" uid="uid://ds1a5vjodq6a" path="res://assets/texturas/atlas/7a588cc9-a1be-4132-8b1d-31d6ff734703.png" id="1_leqng"]
+
+[sub_resource type="FontVariation" id="FontVariation_lkhye"]
+variation_face_index = 8
+variation_embolden = -0.06
+spacing_space = 1
+baseline_offset = 0.405
+
+[node name="MenuInicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(576, 320.5)
+scale = Vector2(0.755208, 0.637695)
+texture = ExtResource("1_leqng")
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -32.0
+offset_right = 1149.0
+offset_bottom = 170.0
+theme_type_variation = &"TooltipLabel"
+theme_override_colors/font_color = Color(0, 1, 0.372549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_lkhye")
+theme_override_font_sizes/font_size = 61
+text = "The God of Ot: La Aventura de Antonio"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 447.0
+offset_right = 959.0
+offset_bottom = 710.0
+alignment = 1
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+modulate = Color(0.286275, 1, 0.180392, 1)
+layout_mode = 2
+text = "Jugar"
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+modulate = Color(0.286275, 1, 0.180392, 1)
+layout_mode = 2
+text = "Opciones"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+modulate = Color(0.286275, 1, 0.180392, 1)
+layout_mode = 2
+text = "Salir"
