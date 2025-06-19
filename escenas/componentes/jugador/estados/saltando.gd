@@ -1,5 +1,6 @@
 extends Estado
 
+
 var doble_salto_usado : bool = false
 
 func enter():

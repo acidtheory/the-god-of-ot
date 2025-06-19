@@ -3,6 +3,10 @@ extends Estado
 @export var attack_hitbox : Area2D
 
 func enter():
+	if jugador.sprite.flip_h == true:
+		attack_hitbox.position.x = -19
+	if jugador.sprite.flip_h == false:
+		attack_hitbox.position.x = 19
 	jugador.sprite.play("Atak")
 
 func physics_update(_delta):

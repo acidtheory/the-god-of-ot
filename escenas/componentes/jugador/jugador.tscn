@@ -255,7 +255,8 @@ shape = SubResource("RectangleShape2D_6on4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ouxw5")
-animation = &"Jump"
+animation = &"Atak"
+frame = 1
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("6_y0sdt")
@@ -285,7 +286,8 @@ attack_hitbox = NodePath("../../Hitbox")
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("11_lde6h")]
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(14, -1)
+position = Vector2(19, -16)
+scale = Vector2(1.2, 1.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_lbvop")

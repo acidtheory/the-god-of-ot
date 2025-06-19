@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://b13g4iwkq8cwu"]
 
-[ext_resource type="Texture2D" uid="uid://1srwh7ummu77" path="res://escenas/componentes/ui/menu_titulo/castle.jpg" id="1_u5mfw"]
+[ext_resource type="Texture2D" uid="uid://gxrre6scsy2e" path="res://escenas/componentes/ui/menu_titulo/castle.jpg" id="1_u5mfw"]
 [ext_resource type="Texture2D" uid="uid://4rjwhl2yc7l8" path="res://sword.png" id="2_h0a6g"]
-[ext_resource type="FontFile" uid="uid://bleqta6ysoks3" path="res://escenas/componentes/ui/menu_titulo/agate.ttf" id="3_84xaf"]
-[ext_resource type="Texture2D" uid="uid://eul4vbyf70o4" path="res://escenas/componentes/ui/menu_titulo/ot.png" id="4_xgg3d"]
+[ext_resource type="FontFile" uid="uid://ya4kjycnvgpd" path="res://escenas/componentes/ui/menu_titulo/agate.ttf" id="3_84xaf"]
+[ext_resource type="Texture2D" uid="uid://8qsghnk4jbqs" path="res://escenas/componentes/ui/menu_titulo/ot.png" id="4_xgg3d"]
 
 [sub_resource type="Gradient" id="Gradient_u5mfw"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
