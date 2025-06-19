@@ -12,6 +12,7 @@ var max_vida : int = 500
 var energia : int
 var max_energia : int = 15
 var monedas : int
+var doble_salto_adquirido : bool = true
 
 func _ready():
 	Globales.jugador = self

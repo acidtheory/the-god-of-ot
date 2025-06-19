@@ -243,7 +243,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbvop"]
 radius = 16.0312
 
-[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud")]
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud") groups=["Jugador"]]
 script = ExtResource("1_6on4n")
 sprite = NodePath("AnimatedSprite2D")
 hud = NodePath("CanvasLayer/HUD")

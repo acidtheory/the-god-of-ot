@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjumuulltllre"]
+
+[ext_resource type="Script" uid="uid://brkb5k4u2epaj" path="res://escenas/componentes/checkpoint/checkpoint.gd" id="1_k1orb"]
+
+[sub_resource type="Gradient" id="Gradient_bw107"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sp6s4"]
+gradient = SubResource("Gradient_bw107")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18kb5"]
+size = Vector2(64, 64)
+
+[node name="Checkpoint" type="Area2D"]
+script = ExtResource("1_k1orb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_sp6s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_18kb5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

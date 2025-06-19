@@ -22,6 +22,7 @@ Globales="*res://escenas/componentes/Globales/globales.gd"
 [global_group]
 
 Enemigos=""
+Jugador=""
 
 [input]
 
