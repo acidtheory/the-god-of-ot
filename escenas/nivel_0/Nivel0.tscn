@@ -1,30 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://c23koia1el0sg"]
+[gd_scene load_steps=12 format=3 uid="uid://c23koia1el0sg"]
 
 [ext_resource type="PackedScene" uid="uid://ta2j1xkutlpa" path="res://escenas/componentes/jugador/jugador.tscn" id="1_8pfdu"]
 [ext_resource type="Texture2D" uid="uid://d2achlsbr80xk" path="res://assets/texturas/icon.svg" id="2_003vn"]
-[ext_resource type="PackedScene" uid="uid://c3fm2ockw2s8n" path="res://escenas/habitacion_template/habitacion_template_grande.tscn" id="2_sp6s4"]
+[ext_resource type="PackedScene" uid="uid://da62seksa31m1" path="res://escenas/nivel_0/habitacion_entre_inicio_y_doble_salto.tscn" id="2_mg017"]
 [ext_resource type="Script" uid="uid://cr3rsh23vx14n" path="res://escenas/componentes/save_manager/save_manager.gd" id="3_310cu"]
-[ext_resource type="PackedScene" uid="uid://bbfl1kuvmi2yo" path="res://escenas/habitacion_template/habitacion_template_grande_chato.tscn" id="3_r2lhu"]
-[ext_resource type="PackedScene" uid="uid://d4detekm6w8wx" path="res://escenas/habitacion_template/habitacion_template.tscn" id="5_bw107"]
+[ext_resource type="PackedScene" uid="uid://ch1h4acmoxjad" path="res://escenas/nivel_0/habitacion_debajo_inicio.tscn" id="3_yau7a"]
+[ext_resource type="PackedScene" uid="uid://comoxc8v87j3s" path="res://escenas/nivel_0/habitacion_debajo_doble_salto.tscn" id="4_anfey"]
+[ext_resource type="PackedScene" uid="uid://bkfkoj2pafpvp" path="res://escenas/nivel_0/habitacion_inicio.tscn" id="4_bw107"]
+[ext_resource type="PackedScene" uid="uid://bmk0joi4bl8kb" path="res://escenas/nivel_0/habitacion_post_doble_salto.tscn" id="5_f2dh6"]
+[ext_resource type="PackedScene" uid="uid://btovf6skg83l4" path="res://escenas/nivel_0/habitacion_victoria.tscn" id="6_sp6s4"]
+[ext_resource type="PackedScene" uid="uid://bxuh5rkqlwpy1" path="res://escenas/nivel_0/habitacion_doble_salto.tscn" id="8_v3xqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_310cu"]
 size = Vector2(128, 128)
 
 [node name="Nivel0" type="Node2D"]
 
-[node name="HabitacionTemplateChico" parent="." instance=ExtResource("5_bw107")]
+[node name="HabitacionInicio" parent="." instance=ExtResource("4_bw107")]
 
-[node name="HabitacionTemplateChico2" parent="." instance=ExtResource("5_bw107")]
+[node name="HabitacionEntreInicioYDobleSalto" parent="." instance=ExtResource("2_mg017")]
 position = Vector2(1152, 0)
 
-[node name="HabitacionTemplateGrande" parent="." instance=ExtResource("2_sp6s4")]
+[node name="HabitacionDebajoInicio" parent="." instance=ExtResource("3_yau7a")]
 position = Vector2(0, 668)
 
-[node name="HabitacionTemplateGrande2" parent="." instance=ExtResource("2_sp6s4")]
-position = Vector2(2304, -1)
-
-[node name="HabitacionTemplateGrande3" parent="." instance=ExtResource("3_r2lhu")]
+[node name="HabitacionDebajoDobleSalto" parent="." instance=ExtResource("4_anfey")]
 position = Vector2(2304, 668)
+
+[node name="HabitacionPostDobleSalto" parent="." instance=ExtResource("5_f2dh6")]
+position = Vector2(3450, -640)
 
 [node name="Jugador" parent="." instance=ExtResource("1_8pfdu")]
 position = Vector2(460, 490)
@@ -42,3 +46,9 @@ shape = SubResource("RectangleShape2D_310cu")
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("3_310cu")
+
+[node name="HabitacionDobleSalto" parent="." instance=ExtResource("8_v3xqc")]
+position = Vector2(2304, 0)
+
+[node name="HabitacionVictoria" parent="." instance=ExtResource("6_sp6s4")]
+position = Vector2(4608, 1308)
