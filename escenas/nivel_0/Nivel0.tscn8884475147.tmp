@@ -56,4 +56,3 @@ position = Vector2(4608, 1308)
 
 [node name="EnemigoArrojadizo" parent="." instance=ExtResource("11_yau7a")]
 position = Vector2(544, 589)
-distancia_vision = 1000.0

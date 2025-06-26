@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnmh7q4qvkm44"]
+
+[ext_resource type="Script" uid="uid://ctn40y8jvvndr" path="res://escenas/componentes/enemigos/enemigo_arrojadizo_bala.gd" id="1_1biiy"]
+[ext_resource type="Texture2D" uid="uid://b1v8m7g2icpv5" path="res://assets/texturas/Radish/Leafs.png" id="1_wfvtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1biiy"]
+atlas = ExtResource("1_wfvtm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1hwf"]
+atlas = ExtResource("1_wfvtm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ry664"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1biiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1hwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfvtm"]
+radius = 3.0
+
+[node name="Bala" type="Area2D"]
+top_level = true
+script = ExtResource("1_1biiy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ry664")
+frame_progress = 0.333172
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_wfvtm")
